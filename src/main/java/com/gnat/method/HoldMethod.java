@@ -1,7 +1,7 @@
 package com.gnat.method;
 
+import com.gant.domain.Paycheck;
 import com.gant.domain.PaymentMethod;
-import com.gant.model.Paycheck;
 
 public class HoldMethod implements PaymentMethod {
 

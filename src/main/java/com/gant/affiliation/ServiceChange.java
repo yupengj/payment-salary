@@ -1,26 +1,26 @@
 package com.gant.affiliation;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class ServiceChange {
-	private Date date;
+	private LocalDate date;
 	private double amout;
 
 	public ServiceChange() {
 		super();
 	}
 
-	public ServiceChange(Date date, double amout) {
+	public ServiceChange(LocalDate date, double amout) {
 		super();
 		this.date = date;
 		this.amout = amout;
 	}
 
-	public Date getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(LocalDate date) {
 		this.date = date;
 	}
 

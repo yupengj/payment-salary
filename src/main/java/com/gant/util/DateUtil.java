@@ -2,13 +2,15 @@ package com.gant.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class DateUtil {
-	public static long getDaysBetween(Date d1, Date d2) {
 
-		return (d2.getTime() - d1.getTime()) / (24 * 60 * 60 * 1000);
+	public static long getDaysBetween(LocalDate d1, LocalDate d2) {
+
+		return 1;
 	}
 
 	public static Date parseDate(String txtDate) {
@@ -21,33 +23,37 @@ public class DateUtil {
 		}
 	}
 
-	public static boolean isFriday(Date d) {
-		Calendar calendar = Calendar.getInstance();
-		return calendar.get(Calendar.DAY_OF_WEEK) == 5;
+	public static boolean isFriday(LocalDate localDate) {
+		return localDate.getDayOfWeek().equals(DayOfWeek.FRIDAY);
 	}
 
-	public static Date add(Date d, int days) {
-		Calendar calendar = Calendar.getInstance();
-		calendar.setTime(d);
-		calendar.add(Calendar.DATE, days);
-		return calendar.getTime();
+	public static LocalDate add(LocalDate d, int days) {
+		return d.plusDays(days);
 	}
 
-	public static boolean isLastDayOfMonth(Date d) {
-		Calendar calendar = Calendar.getInstance();
-		calendar.setTime(d);
-		return calendar.get(Calendar.DATE) == calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+	public static boolean isLastDayOfMonth(LocalDate d) {
+		return true;
+		// TemporalAdjusters.lastDayOfMonth();
+		//
+		//
+		// d.get lastDayOfMonth
+		//
+		// Calendar calendar = Calendar.getInstance();
+		// calendar.setTime(d);
+		// return calendar.get(Calendar.DATE) ==
+		// calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
 	}
 
-	public static Date getFirstDay(Date d) {
-		Calendar calendar = Calendar.getInstance();
-		calendar.setTime(d);
-		int day = calendar.get(Calendar.DATE);
-		calendar.add(Calendar.DATE, -(day - 1));
-		return calendar.getTime();
+	public static LocalDate getFirstDay(LocalDate d) {
+		// Calendar calendar = Calendar.getInstance();
+		// calendar.setTime(d);
+		// int day = calendar.get(Calendar.DATE);
+		// calendar.add(Calendar.DATE, -(day - 1));
+		// return calendar.getTime();
+		return d;
 	}
 
-	public static boolean between(Date d, Date date1, Date date2) {
-		return d.after(date1) && d.before(date2);
+	public static boolean between(LocalDate d, LocalDate date1, LocalDate date2) {
+		return d.isAfter(date1) && d.isBefore(date2);
 	}
 }

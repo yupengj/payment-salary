@@ -1,10 +1,10 @@
-package com.gant.model;
+package com.gant.domain;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Paycheck {
-	private Date payPeriodStart;
-	private Date payPeriodEnd;
+	private LocalDate payPeriodStart;
+	private LocalDate payPeriodEnd;
 	private double grossPay;
 	private double deductions;
 	private double netPay;
@@ -13,7 +13,7 @@ public class Paycheck {
 		super();
 	}
 
-	public Paycheck(Date payPeriodStart, Date payPeriodEnd, double grossPay, double deductions, double netPay) {
+	public Paycheck(LocalDate payPeriodStart, LocalDate payPeriodEnd, double grossPay, double deductions, double netPay) {
 		super();
 		this.payPeriodStart = payPeriodStart;
 		this.payPeriodEnd = payPeriodEnd;
@@ -22,19 +22,19 @@ public class Paycheck {
 		this.netPay = netPay;
 	}
 
-	public Date getPayPeriodStart() {
+	public LocalDate getPayPeriodStart() {
 		return payPeriodStart;
 	}
 
-	public void setPayPeriodStart(Date payPeriodStart) {
+	public void setPayPeriodStart(LocalDate payPeriodStart) {
 		this.payPeriodStart = payPeriodStart;
 	}
 
-	public Date getPayPeriodEnd() {
+	public LocalDate getPayPeriodEnd() {
 		return payPeriodEnd;
 	}
 
-	public void setPayPeriodEnd(Date payPeriodEnd) {
+	public void setPayPeriodEnd(LocalDate payPeriodEnd) {
 		this.payPeriodEnd = payPeriodEnd;
 	}
 

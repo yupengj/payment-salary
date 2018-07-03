@@ -6,16 +6,19 @@ import java.util.Date;
 import com.gant.domain.PaymentSchedule;
 import com.gant.util.DateUtil;
 
-public class WeeklySchedule implements PaymentSchedule {
+public class BiweeklySchedule implements PaymentSchedule {
+
+	LocalDate firstPayableFriday = LocalDate.of(2017, 6, 2);
 
 	@Override
 	public boolean isPayDate(LocalDate date) {
-		return DateUtil.isFriday(date);
+		long interval = DateUtil.getDaysBetween(firstPayableFriday, date);
+		return interval % 14 == 0;
 	}
 
 	@Override
 	public LocalDate getPayPeriodStartDate(LocalDate payPeriodEndDate) {
-		return DateUtil.add(payPeriodEndDate, -6);
-	}
+		return DateUtil.add(payPeriodEndDate, -13);
 
+	}
 }

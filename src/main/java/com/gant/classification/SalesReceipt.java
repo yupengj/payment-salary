@@ -1,26 +1,26 @@
 package com.gant.classification;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 class SalesReceipt {
-	private Date date;
+	private LocalDate date;
 	private double amount;
 
 	public SalesReceipt() {
 		super();
 	}
 
-	public SalesReceipt(Date date, double amount) {
+	public SalesReceipt(LocalDate date, double amount) {
 		super();
 		this.date = date;
 		this.amount = amount;
 	}
 
-	public Date getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(LocalDate date) {
 		this.date = date;
 	}
 

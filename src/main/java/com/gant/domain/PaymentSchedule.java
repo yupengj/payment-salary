@@ -1,10 +1,10 @@
 package com.gant.domain;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public interface PaymentSchedule {
 
-	boolean isPayDate(Date date);
+	boolean isPayDate(LocalDate date);
 
-	Date getPayPeriodStartDate(Date date);
+	LocalDate getPayPeriodStartDate(LocalDate date);
 }
