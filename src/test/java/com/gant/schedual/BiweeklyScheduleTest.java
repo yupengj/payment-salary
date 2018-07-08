@@ -6,7 +6,7 @@ import java.time.LocalDate;
 
 import org.junit.Test;
 
-import com.gant.schedule.BiweeklySchedule;
+import com.gant.payroll.schedule.BiweeklySchedule;
 
 public class BiweeklyScheduleTest {
 
