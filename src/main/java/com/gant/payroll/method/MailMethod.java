@@ -1,4 +1,4 @@
-package com.gnat.payroll.method;
+package com.gant.payroll.method;
 
 import com.gant.payroll.domain.Paycheck;
 import com.gant.payroll.domain.PaymentMethod;

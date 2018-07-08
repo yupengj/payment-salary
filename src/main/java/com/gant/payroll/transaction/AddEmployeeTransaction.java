@@ -4,7 +4,7 @@ import com.gant.payroll.domain.Employee;
 import com.gant.payroll.domain.PaymentClassification;
 import com.gant.payroll.domain.PaymentMethod;
 import com.gant.payroll.domain.PaymentSchedule;
-import com.gnat.payroll.method.HoldMethod;
+import com.gant.payroll.method.HoldMethod;
 
 public abstract class AddEmployeeTransaction {
 	private String name;
