@@ -26,8 +26,8 @@ public class HourlyClassification implements PaymentClassification {
 		return totalPay;
 	}
 
-	public void setTimeCards(List<TimeCard> timeCards) {
-		this.timeCards = timeCards;
+	public void addTimeCards(TimeCard timeCard) {
+		this.timeCards.add(timeCard);
 	}
 
 	private double calculatePayForTimeCard(TimeCard tc) {

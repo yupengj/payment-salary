@@ -1,20 +1,20 @@
 package com.gant.payroll.domain;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Employee {
 	private String id;
 	private String name;
 	private String address;
-	private List<Affiliation> affiliations = new ArrayList<>();
+	private List<Affiliation> affiliations;
 
 	private PaymentClassification classification;
 	private PaymentSchedule schedule;
 	private PaymentMethod paymentMethod;
 
-	public Employee(String name, String address) {
+	public Employee(String id, String name, String address) {
+		this.id = id;
 		this.name = name;
 		this.address = address;
 	}
@@ -39,21 +39,50 @@ public class Employee {
 
 	protected double calculateDeductions(Paycheck pc) {
 		double deductions = 0.0;
+		if (affiliations == null) {
+			return deductions;
+		}
 		for (Affiliation affiliation : affiliations) {
 			deductions += affiliation.calculateDeductions(pc);
 		}
 		return deductions;
 	}
 
+	public PaymentClassification getClassification() {
+		return classification;
+	}
+
 	public void setClassification(PaymentClassification classification) {
 		this.classification = classification;
+	}
+
+	public PaymentSchedule getSchedule() {
+		return schedule;
 	}
 
 	public void setSchedule(PaymentSchedule schedule) {
 		this.schedule = schedule;
 	}
 
+	public PaymentMethod getPaymentMethod() {
+		return paymentMethod;
+	}
+
 	public void setPaymentMethod(PaymentMethod paymentMethod) {
 		this.paymentMethod = paymentMethod;
 	}
+
+	public List<Affiliation> getAffiliations() {
+		return affiliations;
+	}
+
+	public void setAffiliations(List<Affiliation> affiliations) {
+		this.affiliations = affiliations;
+	}
+
+	@Override
+	public String toString() {
+		return "Employee [id=" + id + ", name=" + name + ", address=" + address + "]";
+	}
+
 }

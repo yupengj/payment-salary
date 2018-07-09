@@ -1,28 +1,30 @@
 package com.gant.payroll.transaction;
 
-import com.gant.payroll.classification.HourlyClassification;
+import com.gant.payroll.classification.CommissionedClassification;
 import com.gant.payroll.domain.PaymentClassification;
 import com.gant.payroll.domain.PaymentMethod;
 import com.gant.payroll.domain.PaymentSchedule;
 import com.gant.payroll.method.HoldMethod;
-import com.gant.payroll.schedule.WeeklySchedule;
+import com.gant.payroll.schedule.MothlySchedule;
 
-public class AddHourlyEmployeeTransaction extends AddEmployeeTransaction {
+public class AddCommissionedEmployeeTransaction extends AddEmployeeTransaction {
+	private double salary;
 	private double rate;
 
-	AddHourlyEmployeeTransaction(String empId, String name, String address, double hourlyRate) {
+	public AddCommissionedEmployeeTransaction(String empId, String name, String address, double salary, double rate) {
 		super(empId, name, address);
-		this.rate = hourlyRate;
+		this.salary = salary;
+		this.rate = rate;
 	}
 
 	@Override
 	public PaymentClassification getClassification() {
-		return new HourlyClassification(rate);
+		return new CommissionedClassification(salary, rate);
 	}
 
 	@Override
 	public PaymentSchedule getSchedule() {
-		return new WeeklySchedule();
+		return new MothlySchedule();
 	}
 
 	@Override

@@ -2,13 +2,9 @@ package com.gant.payroll.classification;
 
 import java.time.LocalDate;
 
-class SalesReceipt {
+public class SalesReceipt {
 	private LocalDate date;
 	private double amount;
-
-	public SalesReceipt() {
-		super();
-	}
 
 	public SalesReceipt(LocalDate date, double amount) {
 		super();

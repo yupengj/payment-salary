@@ -8,11 +8,11 @@ import com.gant.payroll.domain.Paycheck;
 import com.gant.payroll.util.DateUtil;
 
 public class UnionAffiliation implements Affiliation {
-	private long memberId;
+	private String memberId;
 	private double weeklyBue;
 	private List<ServiceChange> serviceChanges = new ArrayList<>();
 
-	public UnionAffiliation(long memberId, double weeklyBue) {
+	public UnionAffiliation(String memberId, double weeklyBue) {
 		super();
 		this.memberId = memberId;
 		this.weeklyBue = weeklyBue;
@@ -35,11 +35,11 @@ public class UnionAffiliation implements Affiliation {
 		return totalDue + totalChange;
 	}
 
-	public long getMemberId() {
+	public String getMemberId() {
 		return memberId;
 	}
 
-	public void setMemberId(long memberId) {
+	public void setMemberId(String memberId) {
 		this.memberId = memberId;
 	}
 
@@ -51,11 +51,7 @@ public class UnionAffiliation implements Affiliation {
 		this.weeklyBue = weeklyBue;
 	}
 
-	public List<ServiceChange> getServiceChanges() {
-		return serviceChanges;
-	}
-
-	public void setServiceChanges(List<ServiceChange> serviceChanges) {
-		this.serviceChanges = serviceChanges;
+	public void addServiceChanges(ServiceChange serviceChange) {
+		this.serviceChanges.add(serviceChange);
 	}
 }

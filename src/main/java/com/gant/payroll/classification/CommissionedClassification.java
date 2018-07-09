@@ -28,7 +28,7 @@ public class CommissionedClassification implements PaymentClassification {
 		return salary + commission;
 	}
 
-	public void setSalesReceipt(List<SalesReceipt> salesReceipt) {
-		this.salesReceipt = salesReceipt;
+	public void addSalesReceipt(SalesReceipt salesReceipt) {
+		this.salesReceipt.add(salesReceipt);
 	}
 }

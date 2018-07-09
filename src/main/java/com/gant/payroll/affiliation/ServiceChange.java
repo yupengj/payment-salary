@@ -6,10 +6,6 @@ public class ServiceChange {
 	private LocalDate date;
 	private double amout;
 
-	public ServiceChange() {
-		super();
-	}
-
 	public ServiceChange(LocalDate date, double amout) {
 		super();
 		this.date = date;
