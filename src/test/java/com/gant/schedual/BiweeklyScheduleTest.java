@@ -17,6 +17,7 @@ public class BiweeklyScheduleTest {
 	@Test
 	public void testIsPayDate() throws ParseException {
 		LocalDate d = LocalDate.of(2017, 6, 30);
+		
 		System.out.println(schedule.isPayDate(d));
 	}
 
