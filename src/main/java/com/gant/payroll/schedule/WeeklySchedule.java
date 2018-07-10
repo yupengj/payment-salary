@@ -17,4 +17,9 @@ public class WeeklySchedule implements PaymentSchedule {
 		return DateUtil.add(payPeriodEndDate, -6);
 	}
 
+	@Override
+	public String toString() {
+		return "WeeklySchedule [每周五支付]";
+	}
+
 }

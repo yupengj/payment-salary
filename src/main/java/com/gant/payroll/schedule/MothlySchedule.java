@@ -17,4 +17,9 @@ public class MothlySchedule implements PaymentSchedule{
 		return DateUtil.getFirstDay(payPeriodEndDate);
 	}
 
+	@Override
+	public String toString() {
+		return "MothlySchedule [月底支付]";
+	}
+
 }

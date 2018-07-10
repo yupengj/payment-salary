@@ -10,4 +10,9 @@ public class HoldMethod implements PaymentMethod {
 		System.out.println("到财务自取");
 	}
 
+	@Override
+	public String toString() {
+		return "HoldMethod [到财务自取]";
+	}
+
 }

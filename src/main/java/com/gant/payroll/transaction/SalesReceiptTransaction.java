@@ -5,13 +5,12 @@ import java.time.LocalDate;
 import com.gant.payroll.classification.CommissionedClassification;
 import com.gant.payroll.classification.SalesReceipt;
 import com.gant.payroll.db.PaymentDatabase;
-import com.gant.payroll.db.impl.PaymentDatabaseImpl;
 import com.gant.payroll.domain.Employee;
 import com.gant.payroll.domain.PaymentClassification;
 
 public class SalesReceiptTransaction {
 
-	PaymentDatabase paymentDatabase = new PaymentDatabaseImpl();
+	PaymentDatabase paymentDatabase;
 
 	private String empId;
 	private LocalDate date;
@@ -23,6 +22,10 @@ public class SalesReceiptTransaction {
 		this.amount = amount;
 	}
 
+	public void setPaymentDatabase(PaymentDatabase paymentDatabase) {
+		this.paymentDatabase = paymentDatabase;
+	}
+
 	public void execute() {
 		Employee emp = paymentDatabase.findEmployee(empId);
 		if (emp == null) {
@@ -31,7 +34,9 @@ public class SalesReceiptTransaction {
 		PaymentClassification pc = emp.getClassification();
 		if (pc instanceof CommissionedClassification) {
 			CommissionedClassification cc = (CommissionedClassification) pc;
-			cc.addSalesReceipt(new SalesReceipt(date, amount));
+			SalesReceipt sr = new SalesReceipt(date, amount);
+			cc.addSalesReceipt(sr);
+			paymentDatabase.addSalesReceipt(empId, sr);
 		}
 	}
 }

@@ -54,4 +54,10 @@ public class UnionAffiliation implements Affiliation {
 	public void addServiceChanges(ServiceChange serviceChange) {
 		this.serviceChanges.add(serviceChange);
 	}
+
+	@Override
+	public String toString() {
+		return "UnionAffiliation [memberId=" + memberId + ", weeklyBue=" + weeklyBue + ", serviceChanges=" + serviceChanges + "]";
+	}
+
 }

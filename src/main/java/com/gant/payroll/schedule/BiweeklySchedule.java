@@ -20,4 +20,10 @@ public class BiweeklySchedule implements PaymentSchedule {
 		return DateUtil.add(payPeriodEndDate, -13);
 
 	}
+
+	@Override
+	public String toString() {
+		return "BiweeklySchedule [隔周五支付]";
+	}
+
 }

@@ -1,5 +1,6 @@
 package com.gant.payroll.classification;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.gant.payroll.domain.Paycheck;
@@ -10,7 +11,7 @@ public class CommissionedClassification implements PaymentClassification {
 
 	private double rate;
 	private double salary;
-	private List<SalesReceipt> salesReceipt;
+	private List<SalesReceipt> salesReceipt = new ArrayList<>();
 
 	public CommissionedClassification(double salary, double rate) {
 		this.salary = salary;
@@ -30,5 +31,10 @@ public class CommissionedClassification implements PaymentClassification {
 
 	public void addSalesReceipt(SalesReceipt salesReceipt) {
 		this.salesReceipt.add(salesReceipt);
+	}
+
+	@Override
+	public String toString() {
+		return "CommissionedClassification [rate=" + rate + ", salary=" + salary + ", salesReceipt=" + salesReceipt + "]";
 	}
 }

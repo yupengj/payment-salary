@@ -1,13 +1,19 @@
 package com.gant.payroll.domain;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
+import com.gant.payroll.db.PaymentDatabase;
+
 public class Employee {
+
+	PaymentDatabase paymentDatabase;
+
 	private String id;
 	private String name;
 	private String address;
-	private List<Affiliation> affiliations;
+	private List<Affiliation> affiliations = new ArrayList<>();
 
 	private PaymentClassification classification;
 	private PaymentSchedule schedule;
@@ -34,14 +40,13 @@ public class Employee {
 		pc.setGrossPay(grossPay);
 		pc.setDeductions(deductions);
 		pc.setNetPay(netPay);
+		pc.setEmpId(id);
 		paymentMethod.pay(pc);
+		paymentDatabase.addPaycheck(id, pc);
 	}
 
 	protected double calculateDeductions(Paycheck pc) {
 		double deductions = 0.0;
-		if (affiliations == null) {
-			return deductions;
-		}
 		for (Affiliation affiliation : affiliations) {
 			deductions += affiliation.calculateDeductions(pc);
 		}
@@ -76,13 +81,18 @@ public class Employee {
 		return affiliations;
 	}
 
-	public void setAffiliations(List<Affiliation> affiliations) {
-		this.affiliations = affiliations;
+	public void addAffiliations(Affiliation affiliations) {
+		this.affiliations.add(affiliations);
+	}
+
+	public void setPaymentDatabase(PaymentDatabase paymentDatabase) {
+		this.paymentDatabase = paymentDatabase;
 	}
 
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", name=" + name + ", address=" + address + "]";
+		return "Employee [id=" + id + ", name=" + name + ", address=" + address + ", affiliations=" + affiliations + ", classification=" + classification
+				+ ", schedule=" + schedule + ", paymentMethod=" + paymentMethod + "]";
 	}
 
 }

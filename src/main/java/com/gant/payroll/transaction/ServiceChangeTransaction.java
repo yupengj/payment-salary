@@ -6,13 +6,12 @@ import java.util.List;
 import com.gant.payroll.affiliation.ServiceChange;
 import com.gant.payroll.affiliation.UnionAffiliation;
 import com.gant.payroll.db.PaymentDatabase;
-import com.gant.payroll.db.impl.PaymentDatabaseImpl;
 import com.gant.payroll.domain.Affiliation;
 import com.gant.payroll.domain.Employee;
 
 public class ServiceChangeTransaction {
 
-	PaymentDatabase paymentDatabase = new PaymentDatabaseImpl();
+	PaymentDatabase paymentDatabase;
 
 	private String memberId;
 	private LocalDate date;
@@ -31,10 +30,16 @@ public class ServiceChangeTransaction {
 			for (Affiliation aff : affs) {
 				if (aff instanceof UnionAffiliation) {
 					UnionAffiliation uaff = (UnionAffiliation) aff;
-					uaff.addServiceChanges(new ServiceChange(date, amout));
+					ServiceChange sc = new ServiceChange(date, amout);
+					uaff.addServiceChanges(sc);
+					paymentDatabase.addServiceChange(memberId, sc);
 				}
 			}
 		}
+	}
+
+	public void setPaymentDatabase(PaymentDatabase paymentDatabase) {
+		this.paymentDatabase = paymentDatabase;
 	}
 
 }

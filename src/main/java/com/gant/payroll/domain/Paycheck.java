@@ -8,19 +8,12 @@ public class Paycheck {
 	private double grossPay;
 	private double deductions;
 	private double netPay;
-	private double empId;
+	private String empId;
 
-	public Paycheck() {
-		super();
-	}
-
-	public Paycheck(LocalDate payPeriodStart, LocalDate payPeriodEnd, double grossPay, double deductions, double netPay) {
+	public Paycheck(LocalDate payPeriodStart, LocalDate payPeriodEnd) {
 		super();
 		this.payPeriodStart = payPeriodStart;
 		this.payPeriodEnd = payPeriodEnd;
-		this.grossPay = grossPay;
-		this.deductions = deductions;
-		this.netPay = netPay;
 	}
 
 	public LocalDate getPayPeriodStart() {
@@ -63,11 +56,11 @@ public class Paycheck {
 		this.netPay = netPay;
 	}
 
-	public double getEmpId() {
+	public String getEmpId() {
 		return empId;
 	}
 
-	public void setEmpId(double empId) {
+	public void setEmpId(String empId) {
 		this.empId = empId;
 	}
 

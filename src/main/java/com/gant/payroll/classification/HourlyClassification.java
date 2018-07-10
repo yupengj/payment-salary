@@ -1,5 +1,6 @@
 package com.gant.payroll.classification;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.gant.payroll.domain.Paycheck;
@@ -9,7 +10,7 @@ import com.gant.payroll.util.DateUtil;
 public class HourlyClassification implements PaymentClassification {
 
 	private double hourlyRate;
-	private List<TimeCard> timeCards;
+	private List<TimeCard> timeCards = new ArrayList<>();
 
 	public HourlyClassification(double hourlyRate) {
 		this.hourlyRate = hourlyRate;
@@ -37,6 +38,11 @@ public class HourlyClassification implements PaymentClassification {
 		} else {
 			return 8 * hourlyRate;
 		}
+	}
+
+	@Override
+	public String toString() {
+		return "HourlyClassification [hourlyRate=" + hourlyRate + ", timeCards=" + timeCards + "]";
 	}
 
 }
