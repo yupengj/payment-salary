@@ -4,13 +4,13 @@ import java.time.LocalDate;
 
 import com.gant.payroll.classification.HourlyClassification;
 import com.gant.payroll.classification.TimeCard;
-import com.gant.payroll.db.PaymentDatabase;
+import com.gant.payroll.db.PayrollDatabase;
 import com.gant.payroll.domain.Employee;
 import com.gant.payroll.domain.PaymentClassification;
 
 public class TimeCardTransaction {
 
-	PaymentDatabase paymentDatabase;
+	PayrollDatabase payrollDatabase;
 
 	private String empId;
 	private LocalDate date;
@@ -23,7 +23,7 @@ public class TimeCardTransaction {
 	}
 
 	public void execute() {
-		Employee emp = paymentDatabase.findEmployee(empId);
+		Employee emp = payrollDatabase.findEmployee(empId);
 		if (emp == null) {
 			throw new RuntimeException("没有员工");
 		}
@@ -32,11 +32,11 @@ public class TimeCardTransaction {
 			HourlyClassification hc = (HourlyClassification) pc;
 			TimeCard tc = new TimeCard(date, hours);
 			hc.addTimeCards(tc);
-			paymentDatabase.addTimeCard(empId, tc);
+			payrollDatabase.addTimeCard(empId, tc);
 		}
 	}
 
-	public void setPaymentDatabase(PaymentDatabase paymentDatabase) {
-		this.paymentDatabase = paymentDatabase;
+	public void setPaymentDatabase(PayrollDatabase payrollDatabase) {
+		this.payrollDatabase = payrollDatabase;
 	}
 }

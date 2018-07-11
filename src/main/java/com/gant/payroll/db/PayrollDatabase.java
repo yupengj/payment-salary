@@ -9,7 +9,7 @@ import com.gant.payroll.domain.Affiliation;
 import com.gant.payroll.domain.Employee;
 import com.gant.payroll.domain.Paycheck;
 
-public interface PaymentDatabase {
+public interface PayrollDatabase {
 
 	void addEmployee(String empId, Employee emp);
 
@@ -33,7 +33,7 @@ public interface PaymentDatabase {
 
 	List<Employee> findMembers(String memberId);
 
-	void addPaycheck(String empId, Paycheck paycheck);
+	void savePaycheck(Paycheck paycheck);
 
 	List<Paycheck> findPaychecks(String empId);
 

@@ -1,13 +1,13 @@
 package com.gant.payroll.transaction;
 
 import com.gant.payroll.affiliation.UnionAffiliation;
-import com.gant.payroll.db.PaymentDatabase;
+import com.gant.payroll.db.PayrollDatabase;
 import com.gant.payroll.domain.Affiliation;
 import com.gant.payroll.domain.Employee;
 
 public class AffiliationTransaction {
 
-	PaymentDatabase paymentDatabase;
+	PayrollDatabase payrollDatabase;
 
 	private String empId;
 	private String memberId;
@@ -20,14 +20,14 @@ public class AffiliationTransaction {
 	}
 
 	public void execute() {
-		Employee emp = paymentDatabase.findEmployee(empId);
+		Employee emp = payrollDatabase.findEmployee(empId);
 		Affiliation af = new UnionAffiliation(memberId, weeklyBue);
 		emp.addAffiliations(af);
-		paymentDatabase.addAffiliation(memberId, af);
-		paymentDatabase.addMember(memberId, emp);
+		payrollDatabase.addAffiliation(memberId, af);
+		payrollDatabase.addMember(memberId, emp);
 	}
 
-	public void setPaymentDatabase(PaymentDatabase paymentDatabase) {
-		this.paymentDatabase = paymentDatabase;
+	public void setPaymentDatabase(PayrollDatabase payrollDatabase) {
+		this.payrollDatabase = payrollDatabase;
 	}
 }

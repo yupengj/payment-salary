@@ -7,7 +7,7 @@ import com.gant.payroll.util.DateUtil;
 
 public class BiweeklySchedule implements PaymentSchedule {
 
-	LocalDate firstPayableFriday = LocalDate.of(2017, 7, 20);
+	LocalDate firstPayableFriday = LocalDate.of(2017, 7, 6);
 
 	@Override
 	public boolean isPayDate(LocalDate date) {

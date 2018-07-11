@@ -8,12 +8,12 @@ import java.util.Map;
 import com.gant.payroll.affiliation.ServiceChange;
 import com.gant.payroll.classification.SalesReceipt;
 import com.gant.payroll.classification.TimeCard;
-import com.gant.payroll.db.PaymentDatabase;
+import com.gant.payroll.db.PayrollDatabase;
 import com.gant.payroll.domain.Affiliation;
 import com.gant.payroll.domain.Employee;
 import com.gant.payroll.domain.Paycheck;
 
-public class PaymentDatabaseImpl implements PaymentDatabase {
+public class PaymentDatabaseImpl implements PayrollDatabase {
 
 	Map<String, Employee> id2Emp = new HashMap<>();
 	Map<String, Affiliation> memberId2Affiliation = new HashMap<>();
@@ -88,11 +88,11 @@ public class PaymentDatabaseImpl implements PaymentDatabase {
 	}
 
 	@Override
-	public void addPaycheck(String empId, Paycheck paycheck) {
-		if (!empId2Paycheck.containsKey(empId)) {
-			empId2Paycheck.put(empId, new ArrayList<>());
+	public void savePaycheck(Paycheck paycheck) {
+		if (!empId2Paycheck.containsKey(paycheck.getEmpId())) {
+			empId2Paycheck.put(paycheck.getEmpId(), new ArrayList<>());
 		}
-		empId2Paycheck.get(empId).add(paycheck);
+		empId2Paycheck.get(paycheck.getEmpId()).add(paycheck);
 	}
 
 	@Override

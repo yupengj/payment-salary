@@ -10,7 +10,7 @@ public class DateUtil {
 
 	public static long getDaysBetween(LocalDate d1, LocalDate d2) {
 
-		return 1;
+		return 14;
 	}
 
 	public static Date parseDate(String txtDate) {

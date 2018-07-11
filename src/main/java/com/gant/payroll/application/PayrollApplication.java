@@ -1,22 +1,54 @@
-package com.gant.payroll.transaction;
+package com.gant.payroll.application;
 
 import java.time.LocalDate;
 import java.time.Month;
-import java.util.ArrayList;
 import java.util.List;
-
-import org.junit.Test;
 
 import com.gant.payroll.db.PayrollDatabase;
 import com.gant.payroll.db.impl.PaymentDatabaseImpl;
+import com.gant.payroll.domain.Employee;
 import com.gant.payroll.domain.Paycheck;
+import com.gant.payroll.transaction.AddCommissionedEmployeeTransaction;
+import com.gant.payroll.transaction.AddEmployeeTransaction;
+import com.gant.payroll.transaction.AddHourlyEmployeeTransaction;
+import com.gant.payroll.transaction.AddSalariedEmployeeTransaction;
+import com.gant.payroll.transaction.AffiliationTransaction;
+import com.gant.payroll.transaction.SalesReceiptTransaction;
+import com.gant.payroll.transaction.ServiceChangeTransaction;
+import com.gant.payroll.transaction.TimeCardTransaction;
 
-public class PaydayTransactionTest {
+public class PayrollApplication {
 
-	PayrollDatabase payrollDatabase = new PaymentDatabaseImpl();
+	static PayrollDatabase payrollDatabase = new PaymentDatabaseImpl();
 
-	@Test
-	public void testPaydate() {
+	public static void main(String[] args) {
+		// 模拟数据
+		buildEmp();
+
+		LocalDate date = LocalDate.of(2018, Month.JULY, 20);
+		List<Employee> emps = payrollDatabase.findAllEmp();
+		for (Employee emp : emps) {
+			if (emp.isPayDay(date)) {
+				Paycheck pc = new Paycheck(emp.getPayPeriodStartDate(date), date);
+				emp.payDay(pc);
+				payrollDatabase.savePaycheck(pc);
+			}
+		}
+
+		plintPaycheck(emps);
+	}
+
+	protected static void plintPaycheck(List<Employee> emps) {
+		for (Employee emp : emps) {
+			System.out.println(emp);
+			List<Paycheck> paychecks = payrollDatabase.findPaychecks(emp.getId());
+			if (paychecks != null) {
+				paychecks.forEach(it -> System.out.println(it));
+			}
+		}
+	}
+
+	protected static void buildEmp() {
 		// 增加小时工
 		String empId1 = "1";
 		AddEmployeeTransaction addEmp = new AddHourlyEmployeeTransaction(empId1, "张三", "上海", 10);
@@ -59,26 +91,5 @@ public class PaydayTransactionTest {
 		addEmp = new AddSalariedEmployeeTransaction(empId3, "王五", "上海", 1000);
 		addEmp.setPaymentDatabase(payrollDatabase);
 		addEmp.execute();
-
-		PaydayTransaction paydayTransaction = new PaydayTransaction(LocalDate.of(2018, Month.JULY, 20));
-		paydayTransaction.setPaymentDatabase(payrollDatabase);
-		paydayTransaction.execute();
-
-		List<Paycheck> paycheckAll = new ArrayList<>();
-
-		List<Paycheck> paychecks1 = payrollDatabase.findPaychecks(empId1);
-		if (paychecks1 != null) {
-			paycheckAll.addAll(paychecks1);
-		}
-		List<Paycheck> paychecks2 = payrollDatabase.findPaychecks(empId2);
-		if (paychecks2 != null) {
-			paycheckAll.addAll(paychecks2);
-		}
-		List<Paycheck> paychecks3 = payrollDatabase.findPaychecks(empId3);
-		if (paychecks3 != null) {
-			paycheckAll.addAll(paychecks3);
-		}
-		paycheckAll.forEach(it -> System.out.println(it));
 	}
-
 }

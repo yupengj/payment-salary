@@ -5,7 +5,7 @@ import com.gant.payroll.domain.PaymentClassification;
 import com.gant.payroll.domain.PaymentMethod;
 import com.gant.payroll.domain.PaymentSchedule;
 import com.gant.payroll.method.HoldMethod;
-import com.gant.payroll.schedule.MothlySchedule;
+import com.gant.payroll.schedule.BiweeklySchedule;
 
 public class AddCommissionedEmployeeTransaction extends AddEmployeeTransaction {
 	private double salary;
@@ -24,7 +24,7 @@ public class AddCommissionedEmployeeTransaction extends AddEmployeeTransaction {
 
 	@Override
 	public PaymentSchedule getSchedule() {
-		return new MothlySchedule();
+		return new BiweeklySchedule();
 	}
 
 	@Override

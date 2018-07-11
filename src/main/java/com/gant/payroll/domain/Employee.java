@@ -4,11 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.gant.payroll.db.PaymentDatabase;
-
 public class Employee {
-
-	PaymentDatabase paymentDatabase;
 
 	private String id;
 	private String name;
@@ -42,7 +38,6 @@ public class Employee {
 		pc.setNetPay(netPay);
 		pc.setEmpId(id);
 		paymentMethod.pay(pc);
-		paymentDatabase.addPaycheck(id, pc);
 	}
 
 	protected double calculateDeductions(Paycheck pc) {
@@ -85,8 +80,28 @@ public class Employee {
 		this.affiliations.add(affiliations);
 	}
 
-	public void setPaymentDatabase(PaymentDatabase paymentDatabase) {
-		this.paymentDatabase = paymentDatabase;
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 	@Override

@@ -10,7 +10,7 @@ import com.gant.payroll.schedule.WeeklySchedule;
 public class AddHourlyEmployeeTransaction extends AddEmployeeTransaction {
 	private double rate;
 
-	AddHourlyEmployeeTransaction(String empId, String name, String address, double rate) {
+	public AddHourlyEmployeeTransaction(String empId, String name, String address, double rate) {
 		super(empId, name, address);
 		this.rate = rate;
 	}
