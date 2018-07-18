@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 plugins {
     id 'java-library'
 }
@@ -11,6 +12,8 @@ repositories {
     jcenter()
 }
 =======
+=======
+>>>>>>> 802d09c32f20b6c1274439ddc7598351fa878c4b
 plugins {
     id 'java-library'
 }
