@@ -3,6 +3,12 @@ package com.gant.payroll.method;
 import com.gant.payroll.domain.Paycheck;
 import com.gant.payroll.domain.PaymentMethod;
 
+/**
+ * 财务自取支付方式
+ * 
+ * @author jiangyp
+ *
+ */
 public class HoldMethod implements PaymentMethod {
 
 	@Override

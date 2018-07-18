@@ -5,6 +5,13 @@ import java.time.LocalDate;
 import com.gant.payroll.domain.PaymentSchedule;
 import com.gant.payroll.util.DateUtil;
 
+/**
+ * 
+ * 隔周周五支付
+ * 
+ * @author jiangyp
+ *
+ */
 public class BiweeklySchedule implements PaymentSchedule {
 
 	LocalDate firstPayableFriday = LocalDate.of(2017, 7, 6);

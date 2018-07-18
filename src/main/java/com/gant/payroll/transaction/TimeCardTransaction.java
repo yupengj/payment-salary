@@ -5,12 +5,19 @@ import java.time.LocalDate;
 import com.gant.payroll.classification.HourlyClassification;
 import com.gant.payroll.classification.TimeCard;
 import com.gant.payroll.db.PayrollDatabase;
+import com.gant.payroll.db.impl.PaymentDatabaseImpl;
 import com.gant.payroll.domain.Employee;
 import com.gant.payroll.domain.PaymentClassification;
 
+/**
+ * 增加时间卡片
+ * 
+ * @author jiangyp
+ *
+ */
 public class TimeCardTransaction {
 
-	PayrollDatabase payrollDatabase;
+	protected PayrollDatabase payrollDatabase = new PaymentDatabaseImpl();
 
 	private String empId;
 	private LocalDate date;
@@ -34,9 +41,5 @@ public class TimeCardTransaction {
 			hc.addTimeCards(tc);
 			payrollDatabase.addTimeCard(empId, tc);
 		}
-	}
-
-	public void setPaymentDatabase(PayrollDatabase payrollDatabase) {
-		this.payrollDatabase = payrollDatabase;
 	}
 }

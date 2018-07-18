@@ -6,12 +6,19 @@ import java.util.List;
 import com.gant.payroll.affiliation.ServiceChange;
 import com.gant.payroll.affiliation.UnionAffiliation;
 import com.gant.payroll.db.PayrollDatabase;
+import com.gant.payroll.db.impl.PaymentDatabaseImpl;
 import com.gant.payroll.domain.Affiliation;
 import com.gant.payroll.domain.Employee;
 
+/**
+ * 增加扣费，会费记录
+ * 
+ * @author jiangyp
+ *
+ */
 public class ServiceChangeTransaction {
 
-	PayrollDatabase payrollDatabase;
+	protected PayrollDatabase payrollDatabase = new PaymentDatabaseImpl();
 
 	private String memberId;
 	private LocalDate date;
@@ -37,9 +44,4 @@ public class ServiceChangeTransaction {
 			}
 		}
 	}
-
-	public void setPaymentDatabase(PayrollDatabase payrollDatabase) {
-		this.payrollDatabase = payrollDatabase;
-	}
-
 }

@@ -18,17 +18,14 @@ public class TimeCardTransactionTest {
 	public void testAddTimeCard() {
 		String empId = "1";
 		AddEmployeeTransaction addEmp = new AddHourlyEmployeeTransaction(empId, "张三", "上海", 10);
-		addEmp.setPaymentDatabase(payrollDatabase);
 		addEmp.execute();
 
 		System.out.println(payrollDatabase.findEmployee(empId));
 
 		TimeCardTransaction timeCardTransaction = new TimeCardTransaction(empId, LocalDate.of(2018, Month.JULY, 20), 10);
-		timeCardTransaction.setPaymentDatabase(payrollDatabase);
 		timeCardTransaction.execute();
 
 		timeCardTransaction = new TimeCardTransaction(empId, LocalDate.of(2018, Month.JULY, 19), 13);
-		timeCardTransaction.setPaymentDatabase(payrollDatabase);
 		timeCardTransaction.execute();
 
 		List<TimeCard> timeCards = payrollDatabase.findTimeCards(empId);

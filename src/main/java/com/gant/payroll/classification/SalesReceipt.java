@@ -2,6 +2,12 @@ package com.gant.payroll.classification;
 
 import java.time.LocalDate;
 
+/**
+ * 销售凭条
+ * 
+ * @author jiangyp
+ *
+ */
 public class SalesReceipt {
 	private LocalDate date;
 	private double amount;

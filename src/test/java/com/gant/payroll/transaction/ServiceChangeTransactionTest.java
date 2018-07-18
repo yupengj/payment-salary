@@ -20,23 +20,19 @@ public class ServiceChangeTransactionTest {
 		String memberId = "1";
 		String empId = "1";
 		AddEmployeeTransaction addEmp = new AddHourlyEmployeeTransaction(empId, "张三", "上海", 10);
-		addEmp.setPaymentDatabase(payrollDatabase);
 		addEmp.execute();
 		Employee emp = payrollDatabase.findEmployee(empId);
 
 		AffiliationTransaction affiliationTransaction = new AffiliationTransaction(empId, memberId, 100);
-		affiliationTransaction.setPaymentDatabase(payrollDatabase);
 		affiliationTransaction.execute();
 		System.out.println(emp);
 
 		payrollDatabase.addMember(memberId, emp);
 
 		ServiceChangeTransaction serviceChangeTransaction = new ServiceChangeTransaction(memberId, LocalDate.of(2018, Month.JULY, 19), 100);
-		serviceChangeTransaction.setPaymentDatabase(payrollDatabase);
 		serviceChangeTransaction.execute();
 
 		serviceChangeTransaction = new ServiceChangeTransaction(memberId, LocalDate.of(2018, Month.JULY, 20), 13);
-		serviceChangeTransaction.setPaymentDatabase(payrollDatabase);
 		serviceChangeTransaction.execute();
 
 		List<ServiceChange> serviceChanges = payrollDatabase.findServiceChange(memberId);

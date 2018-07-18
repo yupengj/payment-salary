@@ -3,6 +3,12 @@ package com.gant.payroll.method;
 import com.gant.payroll.domain.Paycheck;
 import com.gant.payroll.domain.PaymentMethod;
 
+/**
+ * 邮寄支票支付方式
+ * 
+ * @author jiangyp
+ *
+ */
 public class MailMethod implements PaymentMethod {
 
 	private String address;

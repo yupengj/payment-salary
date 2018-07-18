@@ -14,7 +14,6 @@ public class AddEmployeeTransactionTest {
 	public void testAddHourlyEmp() {
 		String empId = "1";
 		AddEmployeeTransaction addEmp = new AddHourlyEmployeeTransaction(empId, "张三", "上海", 10);
-		addEmp.setPaymentDatabase(payrollDatabase);
 		addEmp.execute();
 
 		Employee emp = payrollDatabase.findEmployee(empId);
@@ -25,7 +24,6 @@ public class AddEmployeeTransactionTest {
 	public void testAddCommissionedEmp() {
 		String empId = "2";
 		AddEmployeeTransaction addEmp = new AddCommissionedEmployeeTransaction(empId, "李四", "上海", 10, 10);
-		addEmp.setPaymentDatabase(payrollDatabase);
 		addEmp.execute();
 
 		Employee emp = payrollDatabase.findEmployee(empId);
@@ -36,7 +34,6 @@ public class AddEmployeeTransactionTest {
 	public void testAddSalariedEmp() {
 		String empId = "3";
 		AddEmployeeTransaction addEmp = new AddSalariedEmployeeTransaction(empId, "王五", "上海", 10);
-		addEmp.setPaymentDatabase(payrollDatabase);
 		addEmp.execute();
 
 		Employee emp = payrollDatabase.findEmployee(empId);

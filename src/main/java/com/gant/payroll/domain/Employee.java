@@ -4,6 +4,12 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 员工类
+ * 
+ * @author jiangyp
+ *
+ */
 public class Employee {
 
 	private String id;

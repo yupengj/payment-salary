@@ -2,12 +2,19 @@ package com.gant.payroll.transaction;
 
 import com.gant.payroll.affiliation.UnionAffiliation;
 import com.gant.payroll.db.PayrollDatabase;
+import com.gant.payroll.db.impl.PaymentDatabaseImpl;
 import com.gant.payroll.domain.Affiliation;
 import com.gant.payroll.domain.Employee;
 
+/**
+ * 增加扣除项
+ * 
+ * @author jiangyp
+ *
+ */
 public class AffiliationTransaction {
 
-	PayrollDatabase payrollDatabase;
+	protected PayrollDatabase payrollDatabase = new PaymentDatabaseImpl();
 
 	private String empId;
 	private String memberId;
@@ -25,9 +32,5 @@ public class AffiliationTransaction {
 		emp.addAffiliations(af);
 		payrollDatabase.addAffiliation(memberId, af);
 		payrollDatabase.addMember(memberId, emp);
-	}
-
-	public void setPaymentDatabase(PayrollDatabase payrollDatabase) {
-		this.payrollDatabase = payrollDatabase;
 	}
 }

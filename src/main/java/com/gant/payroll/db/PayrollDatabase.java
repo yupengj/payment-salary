@@ -9,11 +9,19 @@ import com.gant.payroll.domain.Affiliation;
 import com.gant.payroll.domain.Employee;
 import com.gant.payroll.domain.Paycheck;
 
+/**
+ * 模拟与数据库交互接口
+ * 
+ * @author jiangyp
+ *
+ */
 public interface PayrollDatabase {
 
 	void addEmployee(String empId, Employee emp);
 
 	Employee findEmployee(String empId);
+
+	List<Employee> findAllEmpByInit();
 
 	List<Employee> findAllEmp();
 

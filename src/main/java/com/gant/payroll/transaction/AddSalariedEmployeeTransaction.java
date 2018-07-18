@@ -7,6 +7,12 @@ import com.gant.payroll.domain.PaymentSchedule;
 import com.gant.payroll.method.HoldMethod;
 import com.gant.payroll.schedule.MothlySchedule;
 
+/**
+ * 增加固定薪资员工
+ * 
+ * @author jiangyp
+ *
+ */
 public class AddSalariedEmployeeTransaction extends AddEmployeeTransaction {
 	private double salary;
 

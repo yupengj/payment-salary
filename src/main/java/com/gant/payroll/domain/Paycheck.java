@@ -2,6 +2,12 @@ package com.gant.payroll.domain;
 
 import java.time.LocalDate;
 
+/**
+ * 支付记录
+ * 
+ * @author jiangyp
+ *
+ */
 public class Paycheck {
 	private LocalDate payPeriodStart;
 	private LocalDate payPeriodEnd;

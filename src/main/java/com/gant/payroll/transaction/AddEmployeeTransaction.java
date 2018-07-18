@@ -1,13 +1,21 @@
 package com.gant.payroll.transaction;
 
 import com.gant.payroll.db.PayrollDatabase;
+import com.gant.payroll.db.impl.PaymentDatabaseImpl;
 import com.gant.payroll.domain.Employee;
 import com.gant.payroll.domain.PaymentClassification;
 import com.gant.payroll.domain.PaymentMethod;
 import com.gant.payroll.domain.PaymentSchedule;
 
+/**
+ * 增加员工
+ * 
+ * @author jiangyp
+ *
+ */
 public abstract class AddEmployeeTransaction {
-	PayrollDatabase payrollDatabase;
+
+	protected PayrollDatabase payrollDatabase = new PaymentDatabaseImpl();
 
 	private String empId;
 	private String name;
@@ -17,10 +25,6 @@ public abstract class AddEmployeeTransaction {
 		this.empId = empId;
 		this.name = name;
 		this.address = address;
-	}
-
-	public void setPaymentDatabase(PayrollDatabase payrollDatabase) {
-		this.payrollDatabase = payrollDatabase;
 	}
 
 	public abstract PaymentClassification getClassification();

@@ -3,6 +3,12 @@ package com.gant.payroll.method;
 import com.gant.payroll.domain.Paycheck;
 import com.gant.payroll.domain.PaymentMethod;
 
+/**
+ * 直接打到银行卡得支付方式
+ * 
+ * @author jiangyp
+ *
+ */
 public class BankMethod implements PaymentMethod {
 	private String bank;
 	private double account;

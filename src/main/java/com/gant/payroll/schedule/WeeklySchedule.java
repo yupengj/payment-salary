@@ -5,6 +5,12 @@ import java.time.LocalDate;
 import com.gant.payroll.domain.PaymentSchedule;
 import com.gant.payroll.util.DateUtil;
 
+/**
+ * 每周周五支付
+ * 
+ * @author jiangyp
+ *
+ */
 public class WeeklySchedule implements PaymentSchedule {
 
 	@Override

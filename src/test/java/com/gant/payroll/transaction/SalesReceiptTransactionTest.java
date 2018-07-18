@@ -19,17 +19,14 @@ public class SalesReceiptTransactionTest {
 
 		String empId = "3";
 		AddEmployeeTransaction addEmp = new AddCommissionedEmployeeTransaction(empId, "王五", "上海", 10, 0.5);
-		addEmp.setPaymentDatabase(payrollDatabase);
 		addEmp.execute();
 
 		System.out.println(payrollDatabase.findEmployee(empId));
 
 		SalesReceiptTransaction salesReceiptTransaction = new SalesReceiptTransaction(empId, LocalDate.of(2018, Month.JULY, 20), 100);
-		salesReceiptTransaction.setPaymentDatabase(payrollDatabase);
 		salesReceiptTransaction.execute();
 
 		salesReceiptTransaction = new SalesReceiptTransaction(empId, LocalDate.of(2018, Month.JULY, 19), 50);
-		salesReceiptTransaction.setPaymentDatabase(payrollDatabase);
 		salesReceiptTransaction.execute();
 
 		List<SalesReceipt> salesReceipts = payrollDatabase.findSalesReceipts(empId);

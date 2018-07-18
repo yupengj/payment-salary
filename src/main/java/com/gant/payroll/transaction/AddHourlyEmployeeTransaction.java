@@ -7,6 +7,12 @@ import com.gant.payroll.domain.PaymentSchedule;
 import com.gant.payroll.method.HoldMethod;
 import com.gant.payroll.schedule.WeeklySchedule;
 
+/**
+ * 增加小时工
+ * 
+ * @author jiangyp
+ *
+ */
 public class AddHourlyEmployeeTransaction extends AddEmployeeTransaction {
 	private double rate;
 

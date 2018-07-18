@@ -2,6 +2,12 @@ package com.gant.payroll.classification;
 
 import java.time.LocalDate;
 
+/**
+ * 时间卡片
+ * 
+ * @author jiangyp
+ *
+ */
 public class TimeCard {
 	private LocalDate date;
 	private double hours;

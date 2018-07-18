@@ -13,21 +13,17 @@ public class AffiliationTransactionTest {
 	@Test
 	public void testAffiliation() {
 		AddEmployeeTransaction addEmp = new AddCommissionedEmployeeTransaction("1", "张三", "上海", 10, 0.5);
-		addEmp.setPaymentDatabase(payrollDatabase);
 		addEmp.execute();
 		System.out.println(payrollDatabase.findEmployee("1"));
 
 		addEmp = new AddCommissionedEmployeeTransaction("2", "李四", "上海", 10, 0.3);
-		addEmp.setPaymentDatabase(payrollDatabase);
 		addEmp.execute();
 		System.out.println(payrollDatabase.findEmployee("2"));
 
 		AffiliationTransaction affiliationTransaction = new AffiliationTransaction("1", "1", 100);
-		affiliationTransaction.setPaymentDatabase(payrollDatabase);
 		affiliationTransaction.execute();
 
 		affiliationTransaction = new AffiliationTransaction("1", "2", 120);
-		affiliationTransaction.setPaymentDatabase(payrollDatabase);
 		affiliationTransaction.execute();
 
 		Employee emp = payrollDatabase.findEmployee("1");

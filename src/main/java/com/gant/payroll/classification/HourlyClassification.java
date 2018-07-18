@@ -7,6 +7,12 @@ import com.gant.payroll.domain.Paycheck;
 import com.gant.payroll.domain.PaymentClassification;
 import com.gant.payroll.util.DateUtil;
 
+/**
+ * 小时工支付策略
+ * 
+ * @author jiangyp
+ *
+ */
 public class HourlyClassification implements PaymentClassification {
 
 	private double hourlyRate;

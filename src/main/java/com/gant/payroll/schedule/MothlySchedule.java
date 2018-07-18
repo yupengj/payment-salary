@@ -5,15 +5,21 @@ import java.time.LocalDate;
 import com.gant.payroll.domain.PaymentSchedule;
 import com.gant.payroll.util.DateUtil;
 
-public class MothlySchedule implements PaymentSchedule{
+/**
+ * 没有最后一个工作日支付
+ * 
+ * @author jiangyp
+ *
+ */
+public class MothlySchedule implements PaymentSchedule {
 
 	@Override
-	public boolean isPayDate(LocalDate date) {		
+	public boolean isPayDate(LocalDate date) {
 		return DateUtil.isLastDayOfMonth(date);
 	}
 
 	@Override
-	public LocalDate getPayPeriodStartDate(LocalDate payPeriodEndDate) {		
+	public LocalDate getPayPeriodStartDate(LocalDate payPeriodEndDate) {
 		return DateUtil.getFirstDay(payPeriodEndDate);
 	}
 

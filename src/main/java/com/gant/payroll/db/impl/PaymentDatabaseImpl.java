@@ -1,115 +1,121 @@
 package com.gant.payroll.db.impl;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import com.gant.payroll.affiliation.ServiceChange;
 import com.gant.payroll.classification.SalesReceipt;
 import com.gant.payroll.classification.TimeCard;
 import com.gant.payroll.db.PayrollDatabase;
+import com.gant.payroll.db.PayrollFactory;
 import com.gant.payroll.domain.Affiliation;
 import com.gant.payroll.domain.Employee;
 import com.gant.payroll.domain.Paycheck;
 
 public class PaymentDatabaseImpl implements PayrollDatabase {
 
-	Map<String, Employee> id2Emp = new HashMap<>();
-	Map<String, Affiliation> memberId2Affiliation = new HashMap<>();
-	Map<String, List<Employee>> memberId2Emps = new HashMap<>();
-	Map<String, List<TimeCard>> empId2TimeCards = new HashMap<>();
-	Map<String, List<SalesReceipt>> empId2SalesReceipts = new HashMap<>();
-	Map<String, List<Paycheck>> empId2Paycheck = new HashMap<>();
-	Map<String, List<ServiceChange>> memberId2Sc = new HashMap<>();
+	protected PayrollFactory payrollFactory = new PayrollFactoryImpl();
+	protected Db db = Db.newInstance();
 
 	@Override
 	public void addEmployee(String empId, Employee emp) {
-		id2Emp.put(empId, emp);
+		db.id2Emp.put(empId, emp);
 	}
 
 	@Override
 	public Employee findEmployee(String empId) {
-		return id2Emp.get(empId);
+		return db.id2Emp.get(empId);
 	}
 
+	/**
+	 * 模拟从数据库查询员工数据，然后构建成内存对象
+	 */
+	@Override
+	public List<Employee> findAllEmpByInit() {
+		payrollFactory.createEmployee();
+		return findAllEmp();
+	}
+
+	/**
+	 * 直接查询内存中的员工对象
+	 */
 	@Override
 	public List<Employee> findAllEmp() {
-		return new ArrayList<>(id2Emp.values());
+		return new ArrayList<>(db.id2Emp.values());
 	}
 
 	@Override
 	public void addAffiliation(String memberId, Affiliation affiliation) {
-		memberId2Affiliation.put(memberId, affiliation);
+		db.memberId2Affiliation.put(memberId, affiliation);
 	}
 
 	@Override
 	public Affiliation findAffiliation(String memberId) {
-		return memberId2Affiliation.get(memberId);
+		return db.memberId2Affiliation.get(memberId);
 	}
 
 	@Override
 	public void addMember(String memberId, Employee emp) {
-		if (!memberId2Emps.containsKey(memberId)) {
-			memberId2Emps.put(memberId, new ArrayList<>());
+		if (!db.memberId2Emps.containsKey(memberId)) {
+			db.memberId2Emps.put(memberId, new ArrayList<>());
 		}
-		memberId2Emps.get(memberId).add(emp);
+		db.memberId2Emps.get(memberId).add(emp);
 	}
 
 	@Override
 	public List<Employee> findMembers(String memberId) {
-		return memberId2Emps.get(memberId);
+		return db.memberId2Emps.get(memberId);
 	}
 
 	@Override
 	public void addTimeCard(String empId, TimeCard timeCard) {
-		if (!empId2TimeCards.containsKey(empId)) {
-			empId2TimeCards.put(empId, new ArrayList<>());
+		if (!db.empId2TimeCards.containsKey(empId)) {
+			db.empId2TimeCards.put(empId, new ArrayList<>());
 		}
-		empId2TimeCards.get(empId).add(timeCard);
+		db.empId2TimeCards.get(empId).add(timeCard);
 	}
 
 	@Override
 	public List<TimeCard> findTimeCards(String empId) {
-		return empId2TimeCards.get(empId);
+		return db.empId2TimeCards.get(empId);
 	}
 
 	@Override
 	public void addSalesReceipt(String empId, SalesReceipt salesReceipt) {
-		if (!empId2SalesReceipts.containsKey(empId)) {
-			empId2SalesReceipts.put(empId, new ArrayList<>());
+		if (!db.empId2SalesReceipts.containsKey(empId)) {
+			db.empId2SalesReceipts.put(empId, new ArrayList<>());
 		}
-		empId2SalesReceipts.get(empId).add(salesReceipt);
+		db.empId2SalesReceipts.get(empId).add(salesReceipt);
 	}
 
 	@Override
 	public List<SalesReceipt> findSalesReceipts(String empId) {
-		return empId2SalesReceipts.get(empId);
+		return db.empId2SalesReceipts.get(empId);
 	}
 
 	@Override
 	public void savePaycheck(Paycheck paycheck) {
-		if (!empId2Paycheck.containsKey(paycheck.getEmpId())) {
-			empId2Paycheck.put(paycheck.getEmpId(), new ArrayList<>());
+		if (!db.empId2Paycheck.containsKey(paycheck.getEmpId())) {
+			db.empId2Paycheck.put(paycheck.getEmpId(), new ArrayList<>());
 		}
-		empId2Paycheck.get(paycheck.getEmpId()).add(paycheck);
+		db.empId2Paycheck.get(paycheck.getEmpId()).add(paycheck);
 	}
 
 	@Override
 	public List<Paycheck> findPaychecks(String empId) {
-		return empId2Paycheck.get(empId);
+		return db.empId2Paycheck.get(empId);
 	}
 
 	@Override
 	public void addServiceChange(String memberId, ServiceChange serviceChange) {
-		if (!memberId2Sc.containsKey(memberId)) {
-			memberId2Sc.put(memberId, new ArrayList<>());
+		if (!db.memberId2Sc.containsKey(memberId)) {
+			db.memberId2Sc.put(memberId, new ArrayList<>());
 		}
-		memberId2Sc.get(memberId).add(serviceChange);
+		db.memberId2Sc.get(memberId).add(serviceChange);
 	}
 
 	@Override
 	public List<ServiceChange> findServiceChange(String memberId) {
-		return memberId2Sc.get(memberId);
+		return db.memberId2Sc.get(memberId);
 	}
 }

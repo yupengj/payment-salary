@@ -2,6 +2,12 @@ package com.gant.payroll.affiliation;
 
 import java.time.LocalDate;
 
+/**
+ * 会员服务费
+ * 
+ * @author jiangyp
+ *
+ */
 public class ServiceChange {
 	private LocalDate date;
 	private double amout;

@@ -7,6 +7,12 @@ import com.gant.payroll.domain.Affiliation;
 import com.gant.payroll.domain.Paycheck;
 import com.gant.payroll.util.DateUtil;
 
+/**
+ * 会费计算实现
+ * 
+ * @author jiangyp
+ *
+ */
 public class UnionAffiliation implements Affiliation {
 	private String memberId;
 	private double weeklyBue;
