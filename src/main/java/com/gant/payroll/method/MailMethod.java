@@ -27,5 +27,4 @@ public class MailMethod implements PaymentMethod {
 	public String toString() {
 		return "MailMethod [address=" + address + "]";
 	}
-
 }

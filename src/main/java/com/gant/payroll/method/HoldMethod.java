@@ -20,5 +20,4 @@ public class HoldMethod implements PaymentMethod {
 	public String toString() {
 		return "HoldMethod [到财务自取]";
 	}
-
 }
