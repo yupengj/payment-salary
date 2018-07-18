@@ -33,6 +33,7 @@ public class AddEmployeeTransactionTest {
 	@Test
 	public void testAddSalariedEmp() {
 		String empId = "3";
+		
 		AddEmployeeTransaction addEmp = new AddSalariedEmployeeTransaction(empId, "王五", "上海", 10);
 		addEmp.execute();
 
