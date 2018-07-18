@@ -20,7 +20,7 @@ public class MailMethod implements PaymentMethod {
 
 	@Override
 	public void pay(Paycheck paycheck) {
-		System.out.println("向" + address + " 发送支票");
+		// "向" + address + " 发送支票"
 	}
 
 	@Override

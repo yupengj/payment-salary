@@ -13,7 +13,7 @@ public class HoldMethod implements PaymentMethod {
 
 	@Override
 	public void pay(Paycheck paycheck) {
-		System.out.println("到财务自取");
+		// 到财务自取
 	}
 
 	@Override

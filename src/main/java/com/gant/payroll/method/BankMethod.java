@@ -21,7 +21,7 @@ public class BankMethod implements PaymentMethod {
 
 	@Override
 	public void pay(Paycheck paycheck) {
-		System.out.println("向银行卡 " + bank + " 支付" + account + "元");
+		// "向银行卡 " + bank + " 支付" + account + "元"
 	}
 
 	@Override
